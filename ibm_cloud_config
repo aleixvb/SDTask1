@@ -1,0 +1,9 @@
+ibm_cf:
+    endpoint    : https://xxx
+    namespace   : xxx
+    api_key     : xxxx:xxx
+
+ibm_cos:
+    endpoint   : https://xxx
+    access_key : xxx
+    secret_key : xxx

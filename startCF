@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Eliminate all functions
+ibmcloud fn action delete mapCountingWords
+ibmcloud fn action delete mapWordCount
+ibmcloud fn action delete reduce
+
+#Create .zips
+cp mapCountingWords.py __main__.py
+zip -r mapCountingWords.zip __main__.py cos_backend.py
+cp mapWordCount.py __main__.py
+zip -r mapWordCount.zip __main__.py cos_backend.py
+cp reduce.py __main__.py
+zip -r reduce.zip __main__.py cos_backend.py
+
+#Create actions
+ibmcloud fn action create mapCountingWords --kind python:3.6 mapCountingWords.zip
+ibmcloud fn action create mapWordCount --kind python:3.6 mapWordCount.zip
+ibmcloud fn action create reduce --kind python:3.6 reduce.zip
+
+#Erase .zips
+rm *.zip
+rm __main__.py

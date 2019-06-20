@@ -93,6 +93,8 @@ def main():
     final_time = time.time()
 
     print('Word Count execution time: ' + '{:.3f}'.format(final_time - start_time))
+    cos.delete_object(data['bucket'], data['file_name'] + '.reduce')
+
 
     exit(0)
 
